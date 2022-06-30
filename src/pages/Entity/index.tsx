@@ -1,9 +1,11 @@
 import { request, useRequest } from "@/.umi/plugin-request";
+import {history} from "@umijs/max"
 import { PageContainer } from "@ant-design/pro-components";
 import { Button, Col, Pagination, Row, Space, Table } from "antd";
 import { useState } from "react";
 import {useToggle} from 'ahooks'
 import Qs from 'query-string';
+import { SearchOutlined } from "@ant-design/icons";
 
 
 
@@ -79,6 +81,17 @@ const Entity: React.FC = () => {
 
     return (
         <PageContainer>
+
+
+            <Row>
+                <Col xs={24} style={{textAlign: 'right', padding:'10px'}}>
+                    <Space>
+                        <Button shape="circle" icon={<SearchOutlined />} onClick={toggle} type={searchVisible ? 'primary' : 'dashed'} />
+                        <Button type="primary" onClick={() => history.push('/entity/edit')}>添加</Button>
+
+                    </Space>
+                </Col>
+            </Row>
             <Table 
                 dataSource={loadQuery.data?.list}
                 columns={columns}
