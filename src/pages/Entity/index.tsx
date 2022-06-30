@@ -36,7 +36,11 @@ const Entity: React.FC = () => {
                 skipNull:true
             })
         }
-    }))
+    }),
+        {
+            refreshDeps:[current, pageSize, sorter]
+        }
+    )
 
 
 
